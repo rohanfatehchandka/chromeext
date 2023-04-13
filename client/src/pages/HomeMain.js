@@ -7,9 +7,8 @@
 //     return (
 // < >
 
-
 // <div className="Home">
-            
+
 //             <h2 id="pulsefit">Welcome to VJTI hostel Portal...</h2>
 //             <h4 id="pulsefit2">"Divided by cities, United by Hostel".....
 // So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
@@ -19,7 +18,6 @@
 //             <img className="homeBgImg" src={pic1}/>
 //           </div>
 
-
 // <div className="homecards">
 //   <div className="homecard1">
 //           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -28,16 +26,16 @@
 //   Chat Room
 //     </h5>
 //     </Link>
-  
+
 //   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
 //   Interactive technology helps create opportunities for communication. It can encourage students to communicate more.
 
 //   </p>
 //   <Link to ="/chatapp"
 //     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-  
+
 //     Enter
-   
+
 //     <svg
 //       aria-hidden="true"
 //       className="w-4 h-4 ml-2 -mr-1"
@@ -87,8 +85,6 @@
 // </div>
 // </div>
 
-
-
 // <div className="homecard3">
 // <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
 //   <Link to="/notification">
@@ -97,7 +93,7 @@
 //     </h5>
 //   </Link>
 //   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-//     get notifications of upcoming events 
+//     get notifications of upcoming events
 //   </p>
 //   <Link to="/notification"
 //     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -119,23 +115,13 @@
 //  </Link>
 // </div>
 // </div>
-// </div>          
-
-   
-
-      
-
-     
-
+// </div>
 
 //       </>
 //         );
 // }
- 
+
 // export default HomeMain;
-
-
-
 
 import React, { useEffect, useRef, useState } from "react";
 // import Header from "../components/Header";
@@ -151,7 +137,6 @@ const Verify = () => {
   const [userInput, setUserInput] = useState("");
   const [response1, setResponse1] = useState("");
   const [response2, setResponse2] = useState("");
-  const [response3, setResponse3] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [tab, setTab] = useState(1);
@@ -197,11 +182,9 @@ const Verify = () => {
       console.log("Printing the object");
       console.log(data.result[0]);
       console.log(data.result[1]);
-      console.log(data.result[2]);
-
+      alert(data.result[0]);
       setResponse1(data.result[0]);
       setResponse2(data.result[1]);
-      setResponse3(data.result[2]);
     } catch (err) {
       console.error(err.message);
     }
@@ -400,7 +383,7 @@ const Verify = () => {
                   cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
                   cupidatat.
                 </p>
-                {response1 && response2 && response3 && (
+                {response1 && response2 && (
                   <Box
                     className="mt-9 min-h-[1000px] w-[1000px] "
                     sx={{
@@ -413,10 +396,10 @@ const Verify = () => {
                       },
                     }}
                   >
+                    console.log("LAKDF;LKAJFD;LAHKDF;LAHDF;")
                     <Paper elevation={3} className="">
                       <div className="p-10 text-2xl ">{response1}</div>
                       <div className="p-10 text-2xl ">{response2}</div>
-                      <div className="p-10 text-2xl ">{response3}</div>
                     </Paper>
                   </Box>
                 )}

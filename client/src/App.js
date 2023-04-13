@@ -38,14 +38,12 @@ import Rejected from "./pages/Rejected";
 import PdfViewer from "./seniorForm";
 import SeniorStudentInfo from "./seniorStudentInfo";
 
-
-
 function App() {
   const { user } = useAuthContext();
   const { admin } = useAuthContext2();
   const { clerk } = useAuthContext3();
   return (
-    <div className="App">
+    <div className="App w-[1000px] ">
       <BrowserRouter>
         {admin && <AdminNavbar />}
         {clerk && <ClerkNavbar />}
@@ -53,10 +51,7 @@ function App() {
         {!user && !clerk && !admin && <StartNavbar />}
         <div className="pages">
           <Routes>
-          <Route
-              path="/"
-              element={<HomeMain /> }
-            />
+            <Route path="/" element={<HomeMain />} />
             {/* <Route
               path="/"
               element={user ? <HomeMain /> : <Navigate to="/login" />}
@@ -65,10 +60,7 @@ function App() {
               path="/login"
               element={!user ? <Login /> : <Navigate to="/" />}
             /> */}
-            <Route
-              path="/register"
-              element={!user ? <Register /> : <Navigate to="/" />}
-            />
+            <Route path="/register" element={<Register />} />
             <Route
               path="/forgotPassword"
               element={!user ? <ForgotPassword /> : <Navigate to="/" />}
@@ -114,9 +106,7 @@ function App() {
             />
             <Route
               path="/blocks"
-              element={ user ? <GetUserBlocks /> 
-              : <Navigate to="/login" />
-            }
+              element={user ? <GetUserBlocks /> : <Navigate to="/login" />}
             />
             <Route
               path="/notification"
@@ -161,10 +151,7 @@ function App() {
               path="/viewrooms"
               element={user ? <AdminHome /> : <Navigate to="/login" />}
             />
-            <Route
-              path="/adminlogin"
-              element={!admin ? <AdminLogin /> : <Navigate to="/admin/ad" />}
-            />
+            <Route path="/adminlogin" element={<AdminLogin />} />
             <Route
               path="/clerklogin"
               element={!clerk ? <ClerkLogin /> : <Navigate to="/clerk/home" />}

@@ -1,325 +1,127 @@
-// import { useState } from "react";
-// import { useSignup } from "../hooks/useSignup";
-// import axios from 'axios';
-// const Signup = () => {
-//   const { signup, error, isLoading } = useSignup();
+// import pic1 from "./hostelpics/vjtipic1.jpeg"
+// import pic2 from "./hostelpics/vjtipic2.jpeg"
+// import pic3 from "./hostelpics/vjtipic3.jpeg"
+// import { Link } from "react-router-dom";
 
-//   const [branch, setBranch] = useState("");
-//   const [category, setCategory] = useState("");
-//   const [address, setAddress] = useState("");
-//   const [gender, setGender] = useState("");
-//   const [name, setName] = useState("");
-//   const [number, setNumber] = useState("");
-//   const [year, setYear] = useState("");
-//   const [merit, setMerit] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [image, setImage] = useState(" ");
+// const HomeMain = () => {
+//     return (
+// < >
 
-//   const imageUpload = (e) => {
-//     const file = e.target.files[0];
-//     setFileToBase(file);
-//     console.log(file);
-//   };
+// <div className="Home">
 
-//   const setFileToBase = (file) => {
-//     const reader = new FileReader();
-//     reader.readAsDataURL(file);
-//     reader.onloadend = () => {
-//       setImage(reader.result);
-//     };
-//   };
-
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-
-//     // console.log(name,number,branch,category,year,merit,address,gender,email,password)
-//     await signup(
-//       name,
-//       number,
-//       branch,
-//       category,
-//       year,
-//       merit,
-//       address,
-//       gender,
-//       email,
-//       password,
-//       image
-//     );
-//   };
-
-//   console.log(name);
-
-//   return (
-//     <>
-//       <div className="registration">
-//         <meta charSet="UTF-8" />
-//         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-//         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-//         <title>Document</title>
-//         <link
-//           href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.1/flowbite.min.css"
-//           rel="stylesheet"
-//         />
-
-//         <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-white-800 dark:border-gray-700 mt-6">
-//           <h1 className="text-center">Admit Form</h1>
-//           <form onSubmit={handleSubmit} className="space-y-6">
-//             <div className="grid gap-6 mb-6 mt-6 md:grid-cols-2">
-//               <div>
-//                 <label
-//                   htmlFor="name"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//                 >
-//                   Full Name
-//                 </label>
-//                 <input
-//                   value={name}
-//                   type="text"
-//                   onChange={(e) => setName(e.target.value)}
-//                   id="name"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                   placeholder="John Doe"
-//                   required=""
-//                 />
-//               </div>
-
-//               <div>
-//                 <label
-//                   htmlFor="phone"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//                 >
-//                   Phone number
-//                 </label>
-//                 <input
-//                   value={number}
-//                   onChange={(e) => setNumber(e.target.value)}
-//                   type="number"
-//                   id="phone"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                   placeholder="123-45-678"
-//                   required=""
-//                 />
-//               </div>
-
-//               <>
-//                 <label
-//                   htmlFor="branches"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//                 >
-//                   Select your branch
-//                 </label>
-//                 <select
-//                   value={branch}
-//                   onChange={(e) => setBranch(e.target.value)}
-//                   id="branches"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 >
-//                   <option selected="">Choose your branch</option>
-//                   <option value="cs">cs</option>
-//                   <option value="mech">mech</option>
-//                   <option value="civil">civil</option>
-//                   <option value="electrinics">electronics</option>
-//                   console.log("hi");
-//                 </select>
-//               </>
-
-//               <>
-//                 <label
-//                   htmlFor="categories"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//                 >
-//                   Select your category
-//                 </label>
-//                 <select
-//                   value={category}
-//                   onChange={(e) => setCategory(e.target.value)}
-//                   id="branch"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 >
-//                   <option selected="">Choose your category</option>
-//                   <option value="open">open</option>
-//                   <option value="obc">obc</option>
-//                   <option value="sc">st</option>
-//                   <option value="nt">nt</option>
-//                 </select>
-//               </>
-
-//               <div>
-//                 <label
-//                   htmlFor="year"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//                 >
-//                   Academic Year
-//                 </label>
-//                 <input
-//                   value={year}
-//                   onChange={(e) => setYear(e.target.value)}
-//                   type="text"
-//                   id="year"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                   placeholder="Branch"
-//                   required=""
-//                 />
-//               </div>
-//               <div>
-//                 <label
-//                   htmlFor="merit"
-//                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//                 >
-//                   Merit Number
-//                 </label>
-//                 <input
-//                   value={merit}
-//                   onChange={(e) => setMerit(e.target.value)}
-//                   type="text"
-//                   id="merit"
-//                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                   placeholder="Branch"
-//                   required=""
-//                 />
-//               </div>
-//             </div>
-//             <>
-//               <label
-//                 htmlFor="branches"
-//                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//               >
-//                 Select your address
-//               </label>
-//               <select
-//                 value={address}
-//                 onChange={(e) => setAddress(e.target.value)}
-//                 id="branches"
-//                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//               >
-//                 <option selected="">Choose </option>
-//                 <option value="Mumbai">Mumbai</option>
-//                 <option value="Outside Mumbai">Outside Mumbai</option>
-//               </select>
-//             </>
-//             <>
-//               <label
-//                 htmlFor="branches"
-//                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-//               >
-//                 Select your gender
-//               </label>
-//               <select
-//                 value={gender}
-//                 onChange={(e) => setGender(e.target.value)}
-//                 id="branches"
-//                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//               >
-//                 <option selected="">Choose your gender</option>
-//                 <option value="M">M</option>
-//                 <option value="F">F</option>
-//               </select>
-//             </>
-
-//             <div className="mb-6">
-//               <label
-//                 htmlFor="email"
-//                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//               >
-//                 Email address
-//               </label>
-//               <input
-//                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)}
-//                 type="email"
-//                 id="email"
-//                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 placeholder="jjdoe@gmail.com"
-//                 required=""
-//               />
-//             </div>
+//             <h2 id="pulsefit">Welcome to VJTI hostel Portal...</h2>
+//             <h4 id="pulsefit2">"Divided by cities, United by Hostel".....
+// So come with lots of curiosity and zeal to have a sight of our hostel fam!!</h4>
 //             <div>
-//               <label
-//                 htmlFor="Password"
-//                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//               >
-//                 Password
-//               </label>
-//               <input
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//                 type="password"
-//                 id="email"
-//                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                 placeholder="**"
-//                 required=""
-//               />
+//             {/* <Link to="./aboutus" is="aboutus">about us</Link> */}
 //             </div>
-//             <div className="mb-3">
-//               <div className="form-file custom-file">
-//                 <label
-//                   htmlFor="image"
-//                   className="form-file-text custom-file-label block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-//                 >
-//                   Choose Image...
-//                 </label>
-//                 <input
-//                   type="file"
-//                   className="form-file-input  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-//                   id="image"
-//                   name="image"
-//                   placeholder="Choose Image"
-//                   required=""
-//                   onChange={imageUpload}
-//                 />
-//                 <label for="image" class="btn btn-primary">
-//                   Browse
-//                 </label>
-//                 /
-//               </div>
-// //             </div>
-//             <div className="flex items-start mb-6">
-//               <div className="flex items-center h-5">
-//                 <input
-//                   id="remember"
-//                   type="checkbox"
-//                   defaultValue=""
-//                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-//                   required=""
-//                 />
-//               </div>
-//               <label
-//                 htmlFor="remember"
-//                 className="ml-2 text-sm font-medium text-black-900 dark:text-black-300"
-//               >
-//                 I agree with the{" "}
-//                 <a
-//                   href="#"
-//                   className="text-blue-600 hover:underline dark:text-blue-500"
-//                 >
-//                   terms and conditions
-//                 </a>
-//               </label>
-//             </div>
-//             <button
-//               onSubmit={handleSubmit}
-//               type="submit"
-//               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-//             >
-//               Submit
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
+//             <img className="homeBgImg" src={pic1}/>
+//           </div>
 
-// export default Signup;
+// <div className="homecards">
+//   <div className="homecard1">
+//           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+//   <Link to ="/chatapp">
+//     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+//   Chat Room
+//     </h5>
+//     </Link>
 
+//   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+//   Interactive technology helps create opportunities for communication. It can encourage students to communicate more.
 
+//   </p>
+//   <Link to ="/chatapp"
+//     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
+//     Enter
 
+//     <svg
+//       aria-hidden="true"
+//       className="w-4 h-4 ml-2 -mr-1"
+//       fill="currentColor"
+//       viewBox="0 0 20 20"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         fillRule="evenodd"
+//         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+//         clipRule="evenodd"
+//       />
+//     </svg>
+//     </Link>
+// </div>
 
+// </div>
 
+// <div className="homecard2">
+// <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+//  <Link to ="/home">
+//     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+//       Room selection
+//     </h5>
+//   </Link>
+//   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+//     Choose your room and roommates SY onwards
+//   </p>
+//   <Link to ="/home"
+//     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+//   >
+//     Enter
+//     <svg
+//       aria-hidden="true"
+//       className="w-4 h-4 ml-2 -mr-1"
+//       fill="currentColor"
+//       viewBox="0 0 20 20"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         fillRule="evenodd"
+//         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+//         clipRule="evenodd"
+//       />
+//     </svg>
+// </Link>
+// </div>
+// </div>
 
+// <div className="homecard3">
+// <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+//   <Link to="/notification">
+//     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+//       Notifications
+//     </h5>
+//   </Link>
+//   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+//     get notifications of upcoming events
+//   </p>
+//   <Link to="/notification"
+//     className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+//   >
+//     Read more
+//     <svg
+//       aria-hidden="true"
+//       className="w-4 h-4 ml-2 -mr-1"
+//       fill="currentColor"
+//       viewBox="0 0 20 20"
+//       xmlns="http://www.w3.org/2000/svg"
+//     >
+//       <path
+//         fillRule="evenodd"
+//         d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+//         clipRule="evenodd"
+//       />
+//     </svg>
+//  </Link>
+// </div>
+// </div>
+// </div>
+
+//       </>
+//         );
+// }
+
+// export default HomeMain;
 
 import React, { useEffect, useRef, useState } from "react";
 // import Header from "../components/Header";
@@ -328,19 +130,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Paper from "@mui/material/Paper";
 import { Box, TextField } from "@mui/material";
 import { ShareLink } from "social-media-sharing";
-// import { useState } from "react";
-// import  {useRegister} from "../hooks/useRegister"
 
 const Register = () => {
+  // const toast = useToast();
   const [hasMounted, setHasMounted] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [response1, setResponse1] = useState("");
   const [response2, setResponse2] = useState("");
-  const [response3, setResponse3] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const [tab, setTab] = useState(1);
-  const tabs = useRef(null);
 
   const shareHandler = () => {
     const socialMediaLinks = new ShareLink("twitter");
@@ -382,11 +179,9 @@ const Register = () => {
       console.log("Printing the object");
       console.log(data.result[0]);
       console.log(data.result[1]);
-      console.log(data.result[2]);
 
       setResponse1(data.result[0]);
       setResponse2(data.result[1]);
-      setResponse3(data.result[2]);
     } catch (err) {
       console.error(err.message);
     }
@@ -585,7 +380,7 @@ const Register = () => {
                   cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
                   cupidatat.
                 </p>
-                {response1 && response2 && response3 && (
+                {response1 && response2 && (
                   <Box
                     className="mt-9 min-h-[1000px] w-[1000px] "
                     sx={{
@@ -601,7 +396,6 @@ const Register = () => {
                     <Paper elevation={3} className="">
                       <div className="p-10 text-2xl ">{response1}</div>
                       <div className="p-10 text-2xl ">{response2}</div>
-                      <div className="p-10 text-2xl ">{response3}</div>
                     </Paper>
                   </Box>
                 )}
@@ -637,16 +431,4 @@ const Register = () => {
   );
 };
 
-
-export default Register ;
-
-
-
-
-
-
-
-
-
-
-
+export default Register;
